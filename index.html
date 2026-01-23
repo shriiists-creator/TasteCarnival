@@ -1,0 +1,1531 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taste Carnival | Banquet, Rooms, Restaurant</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* --- BRAND VARIABLES --- */
+        :root {
+            --brand-red: #800000;
+            /* Maroon */
+            --brand-gold: #FFD700;
+            /* Gold */
+            --brand-dark: #1a1a1a;
+            /* Deep Black */
+            --brand-cream: #FFFFF0;
+            /* Ivory */
+            --brand-green: #2d5a27;
+            /* Veg Green */
+            --btnHoverBG: #4a0000;
+            --btnHoverColor: #FFD700;
+
+            --font-head: 'Playfair Display', serif;
+            --font-body: 'Poppins', sans-serif;
+        }
+
+        /* --- GLOBAL RESETS --- */
+        body {
+            background-color: var(--brand-cream);
+            color: #333;
+            font-family: var(--font-body);
+            overflow-x: hidden;
+            /* Authentic pattern overlay */
+            background-image: radial-gradient(#800000 0.5px, transparent 0.5px), radial-gradient(#800000 0.5px, var(--brand-cream) 0.5px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            background-blend-mode: multiply;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-family: var(--font-head);
+            color: var(--brand-red);
+            font-weight: 700;
+        }
+
+        .text-gold {
+            color: var(--brand-gold) !important;
+        }
+
+        .bg-dark-texture {
+            background: #1a1a1a url('https://www.transparenttextures.com/patterns/dark-wood.png');
+            color: white;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            margin-bottom: 50px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section-title span {
+            font-family: 'Mrs Saint Delafield', cursive;
+            font-size: 1.5rem;
+            color: var(--brand-gold);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* Ornamental Divider */
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            width: 60px;
+            height: 2px;
+            background: var(--brand-gold);
+            display: inline-block;
+        }
+
+        .divider i {
+            margin: 0 15px;
+            color: var(--brand-red);
+            font-size: 1.2rem;
+        }
+
+        /* --- BUTTONS --- */
+        .btn-pind {
+            background: var(--brand-red);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid var(--brand-red);
+            transition: 0.3s;
+            font-weight: 600;
+        }
+
+        .btn-pind:hover {
+            background: var(--btnHoverBG);
+            color: var(--btnHoverColor);
+        }
+
+        .btn-gold-outline {
+            border: 2px solid var(--brand-gold);
+            color: var(--brand-gold);
+            padding: 10px 25px;
+            text-transform: uppercase;
+            font-weight: bold;
+            background: transparent;
+            transition: 0.3s;
+        }
+
+        .btn-check:checked+.btn.btn-pind,
+        .btn.btn-pind.active,
+        .btn.btn-pind.show,
+        .btn.btn-pind:first-child:active,
+        :not(.btn-check)+.btn.btn-pind:active {
+            scale: 0.98;
+            background: var(--btnHoverBG);
+            color: var(--btnHoverColor);
+        }
+
+        #whatsappForm .btn-pind {
+            border-radius: 6px;
+        }
+
+        #whatsappForm textarea {
+            resize: none;
+        }
+
+        .btn-gold-outline:hover {
+            background: var(--brand-gold);
+            color: #000 !important;
+        }
+
+        .btn-check:checked+.btn.btn-gold-outline,
+        .btn.btn-gold-outline.active,
+        .btn.btn-gold-outline.show,
+        .btn.btn-gold-outline:first-child:active,
+        :not(.btn-check)+.btn.btn-gold-outline:active {
+            scale: 0.98;
+            background: var(--brand-gold);
+            color: #000;
+        }
+
+        /* --- NAVBAR --- */
+        .navbar {
+            padding: 15px 0;
+            transition: 0.4s;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0));
+        }
+
+        .navbar.scrolled {
+            background: #1a1a1a;
+            padding: 10px 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar-brand {
+            font-family: var(--font-head);
+            font-size: 1.8rem;
+            color: var(--brand-gold) !important;
+            font-weight: 700;
+        }
+
+        .navbar-nav .nav-link {
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            margin-left: 20px;
+            position: relative;
+        }
+
+        .navbar-nav .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--brand-gold);
+            transition: 0.3s;
+        }
+
+        .navbar-nav .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: var(--brand-gold) !important;
+        }
+
+        .navbar-toggler {
+            background-color: var(--brand-gold);
+        }
+
+        /* --- HERO --- */
+        .hero-slide {
+            height: 95vh;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 12px;
+        }
+
+        .hero-overlay h1 {
+            font-size: 4rem;
+            color: #fff;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-overlay p {
+            color: #eee;
+            font-size: 1.4rem;
+            margin-top: 15px;
+            font-weight: 300;
+        }
+
+        /* --- STATS --- */
+        .stats-box {
+            background: var(--brand-red);
+            padding: 50px 0;
+            color: white;
+            position: relative;
+            margin-top: -50px;
+            z-index: 10;
+            border-top: 4px solid var(--brand-gold);
+        }
+
+        .stat-num {
+            font-size: 2.5rem;
+            font-family: var(--font-head);
+            font-weight: 700;
+            color: var(--brand-gold);
+        }
+
+        /* --- MENU SECTION (Dynamic Swiper) --- */
+        .nav-pills {
+            row-gap: 12px;
+        }
+
+        .nav-pills .nav-link {
+            background: transparent;
+            color: #555;
+            border: 1px solid #ccc;
+            border-radius: 30px;
+            margin: 0 5px;
+            padding: 10px 25px;
+            font-family: var(--font-head);
+            font-weight: 600;
+        }
+
+        .nav-pills .nav-link.active {
+            background: var(--brand-red);
+            color: white;
+            border-color: var(--brand-red);
+        }
+
+        .menu-card {
+            background: #fff;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+            height: 100%;
+            transition: 0.3s;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .menu-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-img-box {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .menu-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+
+        .menu-card:hover .menu-img-box img {
+            transform: scale(1.1);
+        }
+
+        .swiper-pagination-bullet-active {
+            background: var(--brand-red);
+        }
+
+        .diet-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 20px;
+            height: 20px;
+            background: white;
+            padding: 2px;
+            border: 2px solid;
+            z-index: 2;
+        }
+
+        .diet-veg {
+            border-color: var(--brand-green);
+        }
+
+        .diet-veg div {
+            width: 100%;
+            height: 100%;
+            background: var(--brand-green);
+            border-radius: 50%;
+        }
+
+        .diet-nonveg {
+            border-color: var(--brand-red);
+        }
+
+        .diet-nonveg div {
+            width: 100%;
+            height: 100%;
+            background: var(--brand-red);
+            border-radius: 50%;
+        }
+
+        .price {
+            color: var(--brand-red);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        /* --- TESTIMONIALS --- */
+        .testimonial-card {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            border-bottom: 4px solid var(--brand-gold);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .user-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            object-fit: cover;
+            border: 3px solid var(--brand-gold);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #111;
+            color: #aaa;
+            padding: 70px 0 0;
+            border-top: 5px solid var(--brand-red);
+        }
+
+        .footer-widget h4 {
+            color: var(--brand-gold);
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--brand-gold);
+            padding-left: 5px;
+        }
+
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            background: #222;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-right: 10px;
+            border-radius: 50%;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            background: var(--brand-gold);
+            color: black;
+        }
+
+        .copyright {
+            background: #000;
+            padding: 20px 0;
+            margin-top: 50px;
+            font-size: 0.9rem;
+            color: #494b4dbf;
+        }
+
+        .copyright a {
+            color: #494b4dbf;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .copyright a:hover {
+            color: var(--btnHoverColor);
+        }
+
+        footer .container>.row {
+            justify-content: space-between;
+        }
+
+        #about {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+
+
+
+        @media (max-width: 1199.98px) {}
+
+        @media (max-width: 991.98px) {
+            .navbar-nav .nav-link {
+                margin-left: 0;
+            }
+
+            .navbar-collapse {
+                padding: 12px;
+            }
+
+            .navbar:not(.scrolled) .navbar-collapse {
+                background-color: #1a1a1acc;
+            }
+
+            .hero-overlay h1 {
+                font-size: 3rem;
+            }
+        }
+
+        /* Mobile Fixes */
+        @media(max-width: 768px) {
+            .hero-overlay h1 {
+                font-size: 2.5rem;
+            }
+
+            .stats-box {
+                margin-top: 0;
+            }
+
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+
+            .section-padding {
+                padding: 50px 0;
+            }
+
+            .nav-pills .nav-link {
+                flex: 1 1 auto;
+            }
+
+            .section-title span {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            .hero-overlay h1 {
+                font-size: 2rem;
+            }
+
+            .testimonial-card {
+                padding: 16px;
+            }
+
+            .navbar-brand {
+                font-size: 22px;
+            }
+
+            footer .container>.row {
+                justify-content: center;
+                align-items: baseline;
+                text-align: center;
+            }
+
+            #about .divider {
+                justify-content: center !important;
+            }
+
+            #about {
+                text-align: center;
+            }
+
+            #about .section-title {
+                text-align: center !important;
+            }
+        }
+    </style>
+</head>
+
+<body id="home">
+
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="images/Logo.webp" alt="Taste Carnival" style="height: 50px;">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#menu">Menu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#galleryNew">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#reservation">Contact</a></li>
+                    <li class="nav-item ms-lg-3">
+                        <a href="#reservation" class="btn btn-gold-outline btn-sm">Book Table</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-slider">
+        <div class="swiper heroSwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide hero-slide" style="background-image: url('images/hero-banquet.png');">
+                    <div class="hero-overlay">
+                        <h1 data-aos="fade-up">Taste Carnival – Vadodara</h1>
+                        <p data-aos="fade-up" data-aos-delay="200">Dining • Banquets • Rooms</p>
+                        <div class="mt-4" data-aos="fade-up" data-aos-delay="400">
+                            <a href="#menu" class="btn btn-pind">Explore Flavors</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide hero-slide" style="background-image: url('images/hero-room.png');">
+                    <div class="hero-overlay">
+                        <h1>Celebrate Life</h1>
+                        <p>Perfect Venue for Weddings, Parties & Comfortable Stays</p>
+                        <div class="mt-4">
+                            <a href="#reservation" class="btn btn-pind">Book Your Stay</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-button-next text-gold"></div>
+            <div class="swiper-button-prev text-gold"></div>
+        </div>
+    </section>
+
+    <section class="stats-box">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-3 mb-4 mb-md-0">
+                    <div class="stat-num" data-target="25">0</div>
+                    <p class="text-uppercase small ls-1">Years of Legacy</p>
+                </div>
+                <div class="col-md-3 mb-4 mb-md-0">
+                    <div class="stat-num" data-target="100">0</div>
+                    <p class="text-uppercase small ls-1">Outlets in India</p>
+                </div>
+                <div class="col-md-3 mb-4 mb-md-0">
+                    <div class="stat-num" data-target="500">0</div>
+                    <p class="text-uppercase small ls-1">Dishes Served</p>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-num" data-target="100000">0</div>
+                    <p class="text-uppercase small ls-1">Happy Guests</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section-padding">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right">
+                    <div class="position-relative">
+                        <img src="images/about-restaurant.png" class="img-fluid rounded shadow-lg"
+                            alt="Taste Carnival Interior">
+                        <div class="bg-dark-texture p-4 position-absolute bottom-0 end-0 rounded shadow"
+                            style="max-width: 200px;">
+                            <h4 class="text-gold mb-0">Best Family Dining</h4>
+                            <small>Vadodara</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 ps-lg-5" data-aos="fade-left">
+                    <div class="section-title text-start">
+                        <span>Our Story</span>
+                        <h2>A Celebration of Taste</h2>
+                        <div class="divider justify-content-start ms-0"><i class="fa-solid fa-gift"></i></div>
+                    </div>
+                    <p class="lead">Taste Carnival is Vadodara's premier destination for family dining, grand banquets,
+                        and comfortable stays.</p>
+                    <p class="text-muted">Designed to bring families together, we offer a festive atmosphere perfect for
+                        every occasion. Whether you are looking for a delicious meal, a venue for your dream wedding, or
+                        a cozy room to stay, we have it all. Experience the joy of togetherness with our multi-cuisine
+                        delights and warm hospitality.</p>
+                    <a href="#menu" class="btn btn-pind mt-3">Discover Our Vibes</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu" class="section-padding" style="background: #f7f3ec;">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <span>Delicious Offerings</span>
+                <h2>Our Menu</h2>
+                <div class="divider"><i class="fa-solid fa-bowl-rice"></i></div>
+            </div>
+
+            <div class="d-flex justify-content-center mb-5" data-aos="fade-up">
+                <div class="nav nav-pills" id="menu-tab" role="tablist">
+                    <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#starters"
+                        type="button">Starters</button>
+                    <button class="nav-link" data-bs-toggle="pill" data-bs-target="#main" type="button">Main
+                        Course</button>
+                    <button class="nav-link" data-bs-toggle="pill" data-bs-target="#asian" type="button">Asian</button>
+                    <button class="nav-link" data-bs-toggle="pill" data-bs-target="#breads" type="button">Breads &
+                        Rice</button>
+                    <button class="nav-link" data-bs-toggle="pill" data-bs-target="#international"
+                        type="button">International</button>
+                </div>
+            </div>
+
+            <div class="tab-content" id="menu-tabContent">
+
+                <!-- STARTERS -->
+                <div class="tab-pane fade show active" id="starters">
+                    <div class="swiper menuSwiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="menu-card">
+                                    <div class="menu-img-box">
+                                        <div class="diet-icon diet-veg">
+                                            <div></div>
+                                        </div>
+                                        <img src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?auto=format&fit=crop&q=80"
+                                            alt="Paneer Tikka">
+                                    </div>
+                                    <div class="p-4 text-center">
+                                        <h4>Paneer Malai Tikka</h4>
+                                        <p class="text-muted small">Creamy cottage cheese marinated in mild spices.</p>
+                                        <div class="price">₹ 360</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="menu-card">
+                                    <div class="menu-img-box">
+                                        <div class="diet-icon diet-veg">
+                                            <div></div>
+                                        </div>
+                                        <img src="https://images.unsplash.com/photo-1628294895950-98052523e036?auto=format&fit=crop&q=80"
+                                            alt="Afghani Paneer">
+                                    </div>
+                                    <div class="p-4 text-center">
+                                        <h4>Afghani Paneer Tikka</h4>
+                                        <p class="text-muted small">Rich and creamy paneer grilled to perfection.</p>
+                                        <div class="price">₹ 365</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="menu-card">
+                                    <div class="menu-img-box">
+                                        <div class="diet-icon diet-veg">
+                                            <div></div>
+                                        </div>
+                                        <img src="https://images.unsplash.com/photo-1515516947383-5745262f63d2?auto=format&fit=crop&q=80"
+                                            alt="Corn Tikki">
+                                    </div>
+                                    <div class="p-4 text-center">
+                                        <h4>Corn Phudina Tikki</h4>
+                                        <p class="text-muted small">Crispy corn patties flavored with fresh mint.</p>
+                                        <div class="price">₹ 310</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="menu-card">
+                                    <div class="menu-img-box">
+                                        <div class="diet-icon diet-veg">
+                                            <div></div>
+                                        </div>
+                                        <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&q=80"
+                                            alt="Hara Bhara Kabab">
+                                    </div>
+                                    <div class="p-4 text-center">
+                                        <h4>Hara Bhara Kabab</h4>
+                                        <p class="text-muted small">Healthy spinach and green pea patties.</p>
+                                        <div class="price">₹ 310</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="menu-card">
+                                    <div class="menu-img-box">
+                                        <div class="diet-icon diet-veg">
+                                            <div></div>
+                                        </div>
+                                        <img src="https://images.unsplash.com/photo-1606471191009-63994c53433b?auto=format&fit=crop&q=80"
+                                            alt="Broccoli Kabab">
+                                    </div>
+                                    <div class="p-4 text-center">
+                                        <h4>Broccoli Peanut Kabab</h4>
+                                        <p class="text-muted small">Unique blend of broccoli and crushed peanuts.</p>
+                                        <div class="price">₹ 380</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-pagination mt-4 position-relative"></div>
+                    </div>
+                </div>
+
+                <!-- MAIN COURSE -->
+                <div class="tab-pane fade" id="main">
+                    <div class="swiper menuSwiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="menu-card">
+                                    <div class="menu-img-box">
+                                        <div class="diet-icon diet-veg">
+                                            <div></div>
+                                        </div>
+                                        <img src="https://images.unsplash.com/photo-1585937421612-70a008356f36?auto=format&fit=crop&q=80"
+                                            alt="Special Veg">
+                                    </div>
+                                    <div class="p-4 text-center">
+                                        <h4>Taste Carnival Sp Veg</h4>
+                                        <p class="text-muted small">Our chef's special vegetable preparation.</p>
+                                        <div class="price">₹ 340</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="menu-card">
+                                    <div class="menu-img-box">
+                                        <div class="diet-icon diet-veg">
+                                            <div></div>
+                                        </div>
+                                        <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&q=80"
+                                            alt="Veg Kolhapuri">
+                                    </div>
+                                    <div class="p-4 text-center">
+                                        <h4>Vegetable Kolhapuri</h4>
+                                        <p class="text-muted small">Spicy mixed vegetables in a thick gravy.</p>
+                                        <div class="price">₹ 310</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="menu-card">
+                                    <div class="menu-img-box">
+                                        <div class="diet-icon diet-veg">
+                                            <div></div>
+                                        </div>
+                                        <img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&q=80"
+                                            alt="Veg Kheema">
+                                    </div>
+                                    <div class="p-4 text-center">
+                                        <h4>Veg Kheema Makhani</h4>
+                                        <p class="text-muted small">Minced vegetables in a butter-rich gravy.</p>
+                                        <div class="price">₹ 310</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="menu-card">
+                                    <div class="menu-img-box">
+                                        <div class="diet-icon diet-veg">
+                                            <div></div>
+                                        </div>
+                                        <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&q=80"
+                                            alt="Dum Aloo">
+                                    </div>
+                                    <div class="p-4 text-center">
+                                        <h4>Dum Aloo Kashmiri</h4>
+                                        <p class="text-muted small">Stuffed potatoes cooked in Kashmiri spices.</p>
+                                        <div class="price">₹ 330</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="menu-card">
+                                    <div class="menu-img-box">
+                                        <div class="diet-icon diet-veg">
+                                            <div></div>
+                                        </div>
+                                        <img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&q=80"
+                                            alt="Veg Makhanwala">
+                                    </div>
+                                    <div class="p-4 text-center">
+                                        <h4>Veg Makhanwala</h4>
+                                        <p class="text-muted small">Vegetables cooked in a creamy tomato sauce.</p>
+                                        <div class="price">₹ 310</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-pagination mt-4 position-relative"></div>
+                    </div>
+                </div>
+
+                <!-- ASIAN -->
+                <div class="tab-pane fade" id="asian">
+                    <div class="swiper menuSwiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="menu-card">
+                                    <div class="menu-img-box">
+                                        <div class="diet-icon diet-veg">
+                                            <div></div>
+                                        </div>
+                                        <img src="https://images.unsplash.com/photo-1525755662778-989d0524087e?auto=format&fit=crop&q=80"
+                                            alt="Manchurian">
+                                    </div>
+                                    <div class="p-4 text-center">
+                                        <h4>Veg Manchurian Gravy</h4>
+                                        <p class="text-muted small">Veg balls in spicy and tangy soy sauce.</p>
+                                        <div class="price">₹ 310</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="menu-card">
+                                    <div class="menu-img-box">
+                                        <div class="diet-icon diet-veg">
+                                            <div></div>
+                                        </div>
+                                        <img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&q=80"
+                                            alt="Hakka Noodles">
+                                    </div>
+                                    <div class="p-4 text-center">
+                                        <h4>Hakka Noodles</h4>
+                                        <p class="text-muted small">Stir-fried noodles with fresh vegetables.</p>
+                                        <div class="price">₹ 310</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="menu-card">
+                                    <div class="menu-img-box">
+                                        <div class="diet-icon diet-veg">
+                                            <div></div>
+                                        </div>
+                                        <img src="https://images.unsplash.com/photo-1564486303838-8fa84435ac54?auto=format&fit=crop&q=80"
+                                            alt="Kung Pao">
+                                    </div>
+                                    <div class="p-4 text-center">
+                                        <h4>Kung Pao Cottage Cheese</h4>
+                                        <p class="text-muted small">Spicy paneer stir-fry with peanuts.</p>
+                                        <div class="price">₹ 350</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="menu-card">
+                                    <div class="menu-img-box">
+                                        <div class="diet-icon diet-veg">
+                                            <div></div>
+                                        </div>
+                                        <img src="https://images.unsplash.com/photo-1626804475297-411f7a4e6988?auto=format&fit=crop&q=80"
+                                            alt="Thai Green Curry">
+                                    </div>
+                                    <div class="p-4 text-center">
+                                        <h4>Thai Green Curry</h4>
+                                        <p class="text-muted small">Aromatic coconut milk curry served with rice.</p>
+                                        <div class="price">₹ 410</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="menu-card">
+                                    <div class="menu-img-box">
+                                        <div class="diet-icon diet-veg">
+                                            <div></div>
+                                        </div>
+                                        <img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&q=80"
+                                            alt="Nasi Goreng">
+                                    </div>
+                                    <div class="p-4 text-center">
+                                        <h4>Nasi Goreng Rice</h4>
+                                        <p class="text-muted small">Indonesian style fried rice.</p>
+                                        <div class="price">₹ 370</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-pagination mt-4 position-relative"></div>
+                    </div>
+                </div>
+
+                <!-- BREADS & RICE -->
+                <div class="tab-pane fade" id="breads">
+                    <div class="swiper menuSwiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="menu-card">
+                                    <div class="menu-img-box">
+                                        <div class="diet-icon diet-veg">
+                                            <div></div>
+                                        </div>
+                                        <img src="https://images.unsplash.com/photo-1633945274405-b6c8069047b0?auto=format&fit=crop&q=80"
+                                            alt="Naan">
+                                    </div>
+                                    <div class="p-4 text-center">
+                                        <h4>Butter Naan</h4>
+                                        <p class="text-muted small">Soft refined wheat bread topped with butter.</p>
+                                        <div class="price">₹ 65</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="menu-card">
+                                    <div class="menu-img-box">
+                                        <div class="diet-icon diet-veg">
+                                            <div></div>
+                                        </div>
+                                        <img src="https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&q=80"
+                                            alt="Cheese Naan">
+                                    </div>
+                                    <div class="p-4 text-center">
+                                        <h4>Cheese Naan</h4>
+                                        <p class="text-muted small">Naan stuffed with delicious melting cheese.</p>
+                                        <div class="price">₹ 175</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="menu-card">
+                                    <div class="menu-img-box">
+                                        <div class="diet-icon diet-veg">
+                                            <div></div>
+                                        </div>
+                                        <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&q=80"
+                                            alt="Dal Makhani">
+                                    </div>
+                                    <div class="p-4 text-center">
+                                        <h4>Dal Makhani</h4>
+                                        <p class="text-muted small">Creamy black lentils slow cooked to perfection.</p>
+                                        <div class="price">₹ 230</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="menu-card">
+                                    <div class="menu-img-box">
+                                        <div class="diet-icon diet-veg">
+                                            <div></div>
+                                        </div>
+                                        <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&q=80"
+                                            alt="Biryani">
+                                    </div>
+                                    <div class="p-4 text-center">
+                                        <h4>Hyderabadi Biryani</h4>
+                                        <p class="text-muted small">Aromatic spiced rice with vegetables.</p>
+                                        <div class="price">₹ 280</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="menu-card">
+                                    <div class="menu-img-box">
+                                        <div class="diet-icon diet-veg">
+                                            <div></div>
+                                        </div>
+                                        <img src="https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&q=80"
+                                            alt="Pulao">
+                                    </div>
+                                    <div class="p-4 text-center">
+                                        <h4>Kashmiri Pulao</h4>
+                                        <p class="text-muted small">Sweet and savory rice with nuts and fruits.</p>
+                                        <div class="price">₹ 310</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-pagination mt-4 position-relative"></div>
+                    </div>
+                </div>
+
+                <!-- INTERNATIONAL -->
+                <div class="tab-pane fade" id="international">
+                    <div class="swiper menuSwiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="menu-card">
+                                    <div class="menu-img-box">
+                                        <div class="diet-icon diet-veg">
+                                            <div></div>
+                                        </div>
+                                        <img src="https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?auto=format&fit=crop&q=80"
+                                            alt="Alfredo Pasta">
+                                    </div>
+                                    <div class="p-4 text-center">
+                                        <h4>Alfredo Pasta</h4>
+                                        <p class="text-muted small">Pasta in creamy white cheese sauce.</p>
+                                        <div class="price">₹ 440</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="menu-card">
+                                    <div class="menu-img-box">
+                                        <div class="diet-icon diet-veg">
+                                            <div></div>
+                                        </div>
+                                        <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?auto=format&fit=crop&q=80"
+                                            alt="Arrabbiata Pasta">
+                                    </div>
+                                    <div class="p-4 text-center">
+                                        <h4>Arrabbiata Pasta</h4>
+                                        <p class="text-muted small">Pasta in spicy red tomato sauce.</p>
+                                        <div class="price">₹ 440</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="menu-card">
+                                    <div class="menu-img-box">
+                                        <div class="diet-icon diet-veg">
+                                            <div></div>
+                                        </div>
+                                        <img src="https://images.unsplash.com/photo-1547928576-a4a33237cbc3?auto=format&fit=crop&q=80"
+                                            alt="Mexican Pot">
+                                    </div>
+                                    <div class="p-4 text-center">
+                                        <h4>Mexican Hot Pot</h4>
+                                        <p class="text-muted small">Spicy mexican rice and bean stew.</p>
+                                        <div class="price">₹ 490</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="menu-card">
+                                    <div class="menu-img-box">
+                                        <div class="diet-icon diet-veg">
+                                            <div></div>
+                                        </div>
+                                        <img src="https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?auto=format&fit=crop&q=80"
+                                            alt="Baked Macaroni">
+                                    </div>
+                                    <div class="p-4 text-center">
+                                        <h4>Baked Cheese Macaroni</h4>
+                                        <p class="text-muted small">Classic mac n cheese baked till golden.</p>
+                                        <div class="price">₹ 360</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="menu-card">
+                                    <div class="menu-img-box">
+                                        <div class="diet-icon diet-veg">
+                                            <div></div>
+                                        </div>
+                                        <img src="https://plus.unsplash.com/premium_photo-1669831178093-e6660fb203e0?auto=format&fit=crop&q=80"
+                                            alt="Sizzler">
+                                    </div>
+                                    <div class="p-4 text-center">
+                                        <h4>Paneer Shashlik Sizzler</h4>
+                                        <p class="text-muted small">Paneer steaks served on a hot sizzling plate.</p>
+                                        <div class="price">₹ 700</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-pagination mt-4 position-relative"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding bg-dark-texture text-white">
+        <div class="container">
+            <div class="section-title">
+                <span>The Pind Experience</span>
+                <h2 class="text-white">Why Choose Us</h2>
+                <div class="divider"><i class="fa-solid fa-star text-gold"></i></div>
+            </div>
+            <div class="row text-center g-4">
+                <div class="col-md-3">
+                    <i class="fa-solid fa-fire-burner fa-3x text-gold mb-3"></i>
+                    <h4>Clay Oven Cooking</h4>
+                    <p class="text-white-50 small">Authentic flavors from traditional charcoal tandoors.</p>
+                </div>
+                <div class="col-md-3">
+                    <i class="fa-solid fa-leaf fa-3x text-gold mb-3"></i>
+                    <h4>Fresh Ingredients</h4>
+                    <p class="text-white-50 small">Farm-fresh vegetables and ethically sourced spices.</p>
+                </div>
+                <div class="col-md-3">
+                    <i class="fa-solid fa-crown fa-3x text-gold mb-3"></i>
+                    <h4>Royal Ambience</h4>
+                    <p class="text-white-50 small">Elegant decor perfect for family dining and celebrations.</p>
+                </div>
+                <div class="col-md-3">
+                    <i class="fa-solid fa-wine-glass fa-3x text-gold mb-3"></i>
+                    <h4>Premium Bar</h4>
+                    <p class="text-white-50 small">A curated selection of beverages to complement your meal.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="galleryNew" class="section-padding">
+        <div class="container">
+            <div class="section-title">
+                <span>Visual Tour</span>
+                <h2>Our Ambience</h2>
+                <div class="divider"><i class="fa-solid fa-camera"></i></div>
+            </div>
+            <div class="row g-3">
+                <div class="col-md-4 col-sm-6">
+                    <a href="https://img.freepik.com/free-photo/closeup-shot-indian-tasty-food-called-marwari-veg-thali-wooden-table_181624-58043.jpg?auto=format&fit=max&w=1200&q=90"
+                        data-fancybox="gallery" class="d-block h-100">
+                        <img src="https://img.freepik.com/free-photo/closeup-shot-indian-tasty-food-called-marwari-veg-thali-wooden-table_181624-58043.jpg?auto=format&fit=max&w=800&q=80"
+                            class="img-fluid rounded w-100 h-100" style="object-fit:cover;">
+                    </a>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <a href="https://img.freepik.com/free-photo/close-up-appetizing-ramadan-meal_23-2151182553.jpg?auto=format&fit=max&w=1200&q=90"
+                        data-fancybox="gallery" class="d-block h-100">
+                        <img src="https://img.freepik.com/free-photo/close-up-appetizing-ramadan-meal_23-2151182553.jpg?auto=format&fit=max&w=800&q=80"
+                            class="img-fluid rounded w-100 h-100" style="object-fit:cover;">
+                    </a>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <a href="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80"
+                        data-fancybox="gallery" class="d-block h-100">
+                        <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80"
+                            class="img-fluid rounded w-100 h-100" style="object-fit:cover;">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" style="background: #fdfbf7;">
+        <div class="container">
+            <div class="section-title">
+                <span>Guest Love</span>
+                <h2>Testimonials</h2>
+                <div class="divider"><i class="fa-solid fa-quote-left"></i></div>
+            </div>
+            <div class="swiper testimonialSwiper pb-5">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="testimonial-card">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" class="user-avatar" alt="User">
+                            <p class="fst-italic text-muted">"The Paneer Malai Tikka is out of this world! The ambiance
+                                truly
+                                felt like I was dining in a royal palace. Amazing service."</p>
+                            <h5 class="mb-0 mt-3">Priya Sharma</h5>
+                            <small class="text-gold">Food Blogger</small>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="testimonial-card">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" class="user-avatar" alt="User">
+                            <p class="fst-italic text-muted">"Authentic taste, great portion sizes, and the staff is
+                                very courteous. Highly recommend the Taste Carnival Sp Veg."</p>
+                            <h5 class="mb-0 mt-3">Rahul Verma</h5>
+                            <small class="text-gold">Regular Guest</small>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="testimonial-card">
+                            <img src="https://randomuser.me/api/portraits/women/65.jpg" class="user-avatar" alt="User">
+                            <p class="fst-italic text-muted">"A perfect place for family dinners. The decor is stunning
+                                and the live music adds a great touch."</p>
+                            <h5 class="mb-0 mt-3">Anjali Desai</h5>
+                            <small class="text-gold">Local Guide</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-4 bg-white border-top border-bottom">
+        <div class="container text-center">
+            <p class="mb-3 text-uppercase fw-bold text-muted small">Also Available On</p>
+            <div class="d-flex justify-content-center gap-4 align-items-center grayscale-logos">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/bd/Zomato_Logo.svg" alt="Zomato"
+                    style="height: 30px; opacity: 0.6;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Swiggy_Logo_2024.webp/330px-Swiggy_Logo_2024.webp.png"
+                    alt="Swiggy" style="height: 30px; opacity: 0.6;">
+            </div>
+        </div>
+    </section>
+
+    <section id="reservation" class="section-padding bg-dark-texture">
+        <div class="container">
+            <div class="row g-0 rounded overflow-hidden shadow-lg">
+                <div class="col-lg-5 p-md-5 p-sm-4 p-3" style="background: rgba(168, 66, 30, 0.9);">
+                    <h3 class="text-white mb-4">Contact Information</h3>
+                    <div class="d-flex mb-4">
+                        <i class="fa-solid fa-location-dot text-gold fs-4 me-3 mt-1"></i>
+                        <p class="text-white mb-0">2nd Floor, The Emperor Mall,<br>Vasna-Bhayli Main Rd, Vadodara,
+                            391410</p>
+                    </div>
+                    <div class="d-flex mb-4">
+                        <i class="fa-solid fa-phone text-gold fs-4 me-3 mt-1"></i>
+                        <p class="text-white mb-0">+91 95582 11212</p>
+                    </div>
+                    <div class="d-flex mb-4">
+                        <i class="fa-solid fa-envelope text-gold fs-4 me-3 mt-1"></i>
+                        <p class="text-white mb-0">info@tastecarnival.in</p>
+                    </div>
+                    <div class="d-flex mb-5">
+                        <i class="fa-solid fa-clock text-gold fs-4 me-3 mt-1"></i>
+                        <p class="text-white mb-0">Mon - Sun: 12:00 PM - 11:00 PM</p>
+                    </div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Taste+Carnival+Vadodara" target="_blank"
+                        class="btn btn-gold-outline text-white border-white">
+                        Get Directions
+                    </a>
+                </div>
+
+                <div class="col-lg-7 p-md-5 p-sm-4 p-3 bg-white text-dark">
+                    <h3 class="mb-2">Book A Table</h3>
+                    <p class="text-muted mb-4">Reserve your spot instantly via WhatsApp.</p>
+                    <form id="whatsappForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label small fw-bold">Name</label>
+                                <input type="text" id="wName" class="form-control bg-light border-0" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label small fw-bold">Phone</label>
+                                <input type="tel" id="wPhone" class="form-control bg-light border-0" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label small fw-bold">Date</label>
+                                <input type="date" id="wDate" class="form-control bg-light border-0" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label small fw-bold">Time</label>
+                                <input type="time" id="wTime" class="form-control bg-light border-0" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label small fw-bold">Guests</label>
+                                <select id="wGuests" class="form-select bg-light border-0">
+                                    <option value="2">2 People</option>
+                                    <option value="4">4 People</option>
+                                    <option value="6">6 People</option>
+                                    <option value="Group">Large Group</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label small fw-bold">Occasion</label>
+                                <select id="wOccasion" class="form-select bg-light border-0">
+                                    <option value="Casual">Casual Dining</option>
+                                    <option value="Birthday">Birthday</option>
+                                    <option value="Anniversary">Anniversary</option>
+                                    <option value="Business">Business Meet</option>
+                                </select>
+                            </div>
+                            <div class="col-12 mb-4">
+                                <label class="form-label small fw-bold">Special Request</label>
+                                <textarea id="wMessage" class="form-control bg-light border-0" rows="2"></textarea>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-pind w-100">
+                            <i class="fa-brands fa-whatsapp me-2"></i> Confirm Booking
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h4 class="text-gold" style="font-family: 'Playfair Display', serif; font-size: 1.8rem;">TASTE
+                        CARNIVAL</h4>
+                    <p class="small mt-3 pe-lg-4">Multiple venues under one roof. The perfect destination for Banquets,
+                        Rooms, and Fine Dining in Vadodara.</p>
+                    <div class="social-icons mt-4">
+                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-6 mb-4 mb-lg-0">
+                    <div class="footer-widget">
+                        <h4>Quick Links</h4>
+                        <ul class="list-unstyled footer-links">
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#about">About Us</a></li>
+                            <li><a href="#menu">Our Menu</a></li>
+                            <li><a href="#gallery">Gallery</a></li>
+                            <li><a href="#reservation">Book Table</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- <div class="col-lg-2 col-6 mb-4 mb-lg-0">
+                    <div class="footer-widget">
+                        <h4>Legal</h4>
+                        <ul class="list-unstyled footer-links">
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms of Use</a></li>
+                            <li><a href="#">Sitemap</a></li>
+                        </ul>
+                    </div>
+                </div> -->
+                <div class="col-lg-4">
+                    <div class="footer-widget">
+                        <h4>Locate Us</h4>
+                        <div
+                            style="width: 100%; height: 150px; background: #222; border-radius: 5px; overflow: hidden;">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3691.688647568576!2d73.13686867516757!3d22.28976697969446!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395fc792af005be5%3A0xe2d2d2a93a34cdcd!2sPind%20Balluchi!5e0!3m2!1sen!2sin!4v1705059000000!5m2!1sen!2sin"
+                                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright text-center">
+                <div class="container">
+                    <p class="mb-0">&copy; 2026 Taste Carnival. All Rights Reserved. Designed with <i
+                            class="fa-solid fa-heart text-danger"></i> <a target="_blank"
+                            href="https://shriiitrackingsolution.in/">Shriii Tracking Solution</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        // 1. Initialize Animation Library
+        AOS.init({ duration: 800, once: true });
+
+        // 2. Initialize Lightbox
+        Fancybox.bind("[data-fancybox]", {});
+
+        // 3. Navbar Sticky Effect
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // 4. Hero Slider
+        new Swiper('.heroSwiper', {
+            loop: true,
+            effect: 'fade',
+            speed: 1000,
+            autoplay: { delay: 5000 },
+
+            // 1. Set default (mobile) to DISABLED
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+                enabled: false,
+            },
+
+            breakpoints: {
+                // 2. Enable navigation for screens 768px (md) and wider
+                768: {
+                    navigation: {
+                        enabled: true,
+                    },
+                },
+            },
+        });
+
+        // 5. CRITICAL: Menu Swiper Logic
+        // 'observer: true' ensures swiper calculates width even when tab is hidden
+        new Swiper('.menuSwiper', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            observer: true,
+            observeParents: true,
+            pagination: { el: '.swiper-pagination', clickable: true },
+            breakpoints: {
+                640: { slidesPerView: 2 },
+                992: { slidesPerView: 3 },
+                1200: { slidesPerView: 4 }
+            }
+        });
+
+
+        // 6. Testimonial Slider
+        new Swiper('.testimonialSwiper', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            autoplay: { delay: 4000 },
+            pagination: { el: '.swiper-pagination', clickable: true },
+            breakpoints: {
+                768: { slidesPerView: 2 },
+                992: { slidesPerView: 3 }
+            }
+        });
+
+        // 7. WhatsApp Reservation Form
+        document.getElementById('whatsappForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const name = document.getElementById('wName').value;
+            const phone = document.getElementById('wPhone').value;
+            const date = document.getElementById('wDate').value;
+            const time = document.getElementById('wTime').value;
+            const guests = document.getElementById('wGuests').value;
+            const occasion = document.getElementById('wOccasion').value;
+            const msg = document.getElementById('wMessage').value;
+
+            // Pind Balluchi Vadodara Number
+            const targetPhone = "919558211212";
+
+            const text = `*New Table Reservation*%0A------------------%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Date:* ${date}%0A*Time:* ${time}%0A*Guests:* ${guests}%0A*Occasion:* ${occasion}%0A*Note:* ${msg}`;
+
+            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+            const url = isMobile
+                ? `https://wa.me/${targetPhone}?text=${text}`
+                : `https://web.whatsapp.com/send?phone=${targetPhone}&text=${text}`;
+
+            window.open(url, '_blank');
+        });
+
+        // 8. Stats Counter Animation
+        const statsSection = document.querySelector('.stats-box');
+        const counters = document.querySelectorAll('.stat-num');
+        let started = false;
+
+        const startCount = (el) => {
+            const target = +el.getAttribute('data-target');
+            const duration = 2000;
+            const increment = target / (duration / 20);
+
+            let current = 0;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    el.innerText = target + "+";
+                    clearInterval(timer);
+                } else {
+                    el.innerText = Math.ceil(current);
+                }
+            }, 20);
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting && !started) {
+                counters.forEach(num => startCount(num));
+                started = true;
+            }
+        }, { threshold: 0.5 });
+
+        observer.observe(statsSection);
+    </script>
+</body>
+
+</html>
